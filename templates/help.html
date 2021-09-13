@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--title 元素的内容会显示在浏览器的标题栏中-->
+	<title>帮助</title>
+	<script type="text/javascript" src="../static/js/jquery-3.6.0.min.js"></script>
+	<!--可无视-->
+	<link href="../static/css/main.css" rel="stylesheet" type="text/css" />
+
+	<!--必要样式-->
+	<!-- Bootstrap 的 CSS 文件 -->
+	<link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <script src="../static/layui-v2.6.8/layui/layui.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../static/layui-v2.6.8/layui/css/layui.css" media="all">
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+		integrity="sha384-olOxEXxDwd20BlATUibkEnjPN3sVq2YWmYOnsMYutq7X8YcUdD6y/1I+f+ZOq/47" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/>
+</head>
+<body>
+    <div class="container-fluid">
+        <p class="lead" style="margin-bottom: 5px"><strong>标签说明：</strong></p>
+        <p class="lead" style="margin-bottom: 5px"><strong>prov：</strong>省级行政区划，省、自治区、直辖市(如浙江省、内蒙古自治区、北京市)</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>city：</strong>地级行政区划，地级市、地区、自治州等(如杭州市、日喀则地区)</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>district：</strong>县级行政区划，市辖区、县级市、县等(如朝阳区、定日县)</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>devzone：</strong>广义的上的开发区，除国家级、省级等具备一定行政职能的开发区外，一般性产业园区、度假区等也应标注为开发区。</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>town：</strong>乡级行政区划，镇、街道、乡等(如xx镇、北太平庄街道)</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>community：</strong>包含社区、行政村（生产大队、村委会），自然村(如北胡乔村、顾家桥社区)</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>village_group：</strong>限定 xx 组、xx 队、xx 社（xx 为数字）。(如县腰庄河村三组)</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>road：</strong>有正式名称的道路，包括隧道、高架、街、弄、巷等。 步行街、商业街、统一标注为 road</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>roadno：</strong>路号。(如中环大道10号)</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>poi：</strong>兴趣点,一个POI可以是一栋房子、一个商铺、一个邮筒、一个公交站等。(如阿里巴巴西溪园区,xx小区)</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>subpoi：</strong>子兴趣点。(如延安南路石油小区东门)</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>houseno：</strong>楼栋号，农村地址的门牌号(包括类似南楼、北楼一类的描述)(如阿里巴巴西溪园区6号楼)</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>cellno：</strong>单元号(如竹海水韵春风里12幢3单元)</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>floorno：</strong>楼层号(如东环广场B座5层)</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>roomno：</strong>房间号、户号(如304寝室、803房间)</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>detail：</strong>poi 内部的四层关系（house,cell,floor, room）没明确是哪一层，如 xx-xx-x-x，则整体标注detail。(如竹海水韵春风里 12-3-1001)</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>assist：</strong>普通辅助定位词(如附近、东面)</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>distance：</strong>距离辅助定位词，如“几十米”，如只是定性描述，如“不远”、“快到”都标注为 assist(如716县道北50米)</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>intersection：</strong>道路口，口、交叉口、道路（高速）出入口，一定与road同时出现，注意：小区出入口和车库出入口为 poi(如劳动路与红门局交叉口)</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>redundant：</strong>非地址元素，如配送提示、配送要求、友情提醒或威胁，等人、邮编、电话。退货订单信息。胡乱填写。</p>
+        <p class="lead" style="margin-bottom: 5px"><strong>others：</strong>以上标签未覆盖的情况，或者无法判断的地址元素（此标签标注的一定是地址元素，如山、岛等</p>
+    </div>
+
+</body>
+
+
+</html>

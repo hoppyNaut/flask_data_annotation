@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--title 元素的内容会显示在浏览器的标题栏中-->
+	<title>虚假地址数据标注</title>
+	<script type="text/javascript" src="static/js/jquery-3.6.0.min.js"></script>
+	<!--可无视-->
+	<link href="static/css/main.css" rel="stylesheet" type="text/css" />
+
+	<!--必要样式-->
+	<!-- Bootstrap 的 CSS 文件 -->
+	<link href="static/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <script src="static/layui-v2.6.8/layui/layui.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="static/layui-v2.6.8/layui/css/layui.css" media="all">
+
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+		integrity="sha384-olOxEXxDwd20BlATUibkEnjPN3sVq2YWmYOnsMYutq7X8YcUdD6y/1I+f+ZOq/47" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/>
+
+</head>
+
+
+<body>
+	<!-- Content -->
+	<div class="jumbotron jumbotron-fluid" style="margin-bottom:0px;padding-bottom:10px ">
+		<!-- .container类用于固定宽度(两侧留白)并支持响应式布局的容器 -->
+		<!-- .container-fluid类用于100%宽度，占据全部视口(viewport)的容器-->
+		<div class="container">
+			<h2 style="margin-bottom:5px">虚假地址数据标注</h2>
+			<p class="lead" style="margin-bottom:5px">修改错误的标注,标注完成后确认</p>
+			<button class="layui-btn layui-btn-primary layui-border-blue layui-btn-sm" style="margin-bottom:10px" onclick="btn_help_click()">帮助</button>
+		</div>
+	</div>
+
+<!--{#    <div class="layui-input-inline">#}-->
+<!--{#        <select name="tags" lay-verify="required" lay-search>#}-->
+<!--{#            <optgroup label="地级行政区划，地级市、地区、自治州等">#}-->
+<!--{#                <option value="B-city">B-city</option>#}-->
+<!--{#                <option value="E-city">E-city</option>#}-->
+<!--{#            </optgroup>#}-->
+<!--{#        </select>#}-->
+<!--{#    </div>#}-->
+
+
+	<!-- 分页 -->
+	<div class="col-sm-12">
+		<div class="container">
+		<div class="row " style="margin-top: 10px">
+                <nav aria-label="Page navigation" class="pull-center">
+					<ul class="pagination">
+						{{ html|safe }}
+{#                        <form class="form-inline">#}
+{#                            <div class="form-group">#}
+{#                                <input id="page_input" type="text" min="1" class="form-control" placeholder="请输入跳转页面">#}
+{#                                <button id="btn_page_jump" type="submit" class="layui-btn layui-btn-primary layui-border-blue layui-btn-sm" onclick="btn_jump_page()">跳转</button>#}
+{#                            </div>#}
+{#                        </form>#}
+					</ul>
+				</nav>
+				<ul>
+<!--{#					{% for address in address_list %}#}-->
+<!--{#						<li class="list-group-item">#}-->
+<!--{#                            <span id="address_id">{{ address['id'] }}</span>#}-->
+<!--{#                            <h4>地址信息：{{ address['address']}}</h4>#}-->
+<!--{#                            <h4>标注信息：{{ address['annotations']}}</h4>#}-->
+<!--{#                            <div class="btn-group" role="group" aria-label="...">#}-->
+<!--{#                                <button type="button" class="btn btn-primary" onclick="btn_uncertain_click()">编辑</button>#}-->
+<!--{#                                <button type="button" class="btn btn-warning">不确定</button>#}-->
+<!--{#                            </div>#}-->
+<!--{#                        </li>#}-->
+<!--{#                    {% endfor %}#}-->
+                    {{ html_address|safe }}
+				</ul>
+		</div>
+		</div>
+	</div>
+
+
+<!--<div style="display:flex;justify-content:space-around">-->
+<!--		<div class="container" style="width:40%">-->
+<!--		<div class="docs-methods">-->
+<!--			<form class="form-inline" action="/" method="get">-->
+<!--				<div id="distpicker">-->
+<!--					<div class="form-group">-->
+<!--						<div style="position: relative;">-->
+<!--							<input id="city-picker3" name="city-picker3" class="form-control" readonly type="text" value=""-->
+<!--								data-toggle="city-picker">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="form-group">-->
+<!--						<button class="btn btn-warning" id="reset" type="button">重置</button>-->
+<!--						<button class="btn btn-danger" id="drawa" type="button">确认</button>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<br></br>-->
+<!--				<div class="input-group mb-3">-->
+<!--					<input type="text" class="form-control" id="input_text" name="input_text" placeholder="请输入详细地址" aria-label="请输入详细地址" aria-describedby="button-addon2">-->
+<!--  					<div class="input-group-btn">-->
+<!--						<button class="btn btn-danger" id="button-addon2" type="button" onclick="{ this.form.submit(); return false; }">提交</button>-->
+<!--						<button class="btn btn-danger" id="exam" type="button">检验</button>-->
+<!--  					</div>-->
+<!--				</div>-->
+<!--			</form>-->
+<!--		</div>-->
+
+<!--		<br></br>-->
+
+<!--		<table>-->
+<!--		<h3>识别结果</h3>-->
+<!--&lt;!&ndash;        <td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div type="text" class="result" name="res_text" id="res_text" value="" style="width:400px;height:100px;overflow-y:auto;border-style:solid; border-width:1px; border-color:#000">{{res_text}}</div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </td>&ndash;&gt;-->
+<!--    	</table>-->
+<!--			<div class="form-group">-->
+<!--				<input type="text" class="form-control" id="location" name="input_text" style="width:500px;height:100px;overflow-y:auto;border-style:solid; border-width:1px; border-color:#000" value={{res_text}}>-->
+<!--			</div>-->
+<!--		<script>-->
+<!--    	var textarea = document.getElementById('res_text');-->
+<!--    	textarea.scrollTop = textarea.scrollHeight;-->
+<!--    	</script>-->
+
+
+<!--	</div>-->
+<!--	</div>-->
+
+</body>
+
+<script>
+    function btn_unsure_click(index)
+    {
+        var req = new XMLHttpRequest()
+        req.open('post','unsure_address',true)
+        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+        req.send("id=" + index)
+        req.onload=function(){
+            location.reload();
+        }
+    }
+</script>
+
+<script>
+    function change_href(){
+        var page_id = document.getElementById("page_input").value;
+        var page_jump = document.getElementById("page_jump");
+        var jump_href = page_jump.href;
+        var href_arr = jump_href.split("?");
+        page_jump.href = href_arr[0] + '?page=' + page_id;
+    }
+
+    function keyup_submit(e){
+        var evt = window.event || e;
+        if (evt.keyCode == 13){
+            //回车事件
+            // alert("跳转")
+            var page_html = document.getElementById("page_jump").href;
+            window.location.href=page_html;
+        }
+    }
+</script>
+
+<script>
+    function btn_ensure_click(index)
+    {
+        var req = new XMLHttpRequest()
+        req.open('post','ensure_address',true)
+        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+        req.send("id=" + index)
+        req.onload=function(){
+            location.reload();
+        }
+    }
+</script>
+
+<script>
+	function btn_help_click()
+	{
+		layui.use('layer', function () {
+			layer.open({
+				type: 2,   //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层)
+				title: '帮助面板',   //tittle
+				area: ['700px','600px'],   //width , height
+				offset: 'auto',
+				fixed: false,
+				content: '/help_panel',
+				id: 'help_panel',
+				resize: true,
+				maxmin: true,
+				success: function (layero, index) {
+				},
+				end: function () {
+				   location.reload();
+				},
+			});
+		});
+	}
+</script>
+
+<script>
+    function btn_edit_click(index)
+    {
+        var req = new XMLHttpRequest()
+        req.open('post','address_request',true)
+        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+        req.send("id=" + index)
+        req.onload=function(){
+            var jsonObj = JSON.parse(req.responseText)
+            // var showInfo = jsonObj.address + '\n' + jsonObj.annotations
+            // alert(jsonObj.sentence_length)
+            layui.use('layer', function () {
+                layer.open({
+                    type: 2,   //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层)
+                    title: '标注面板',   //tittle
+                    area: ['500px', '100%'],   //width , height
+                    offset: 'r',
+                    fixed: false,
+                    content: '/edit_panel/' + jsonObj.id, //url
+                    id: 'data_' + jsonObj.id,
+                    resize: true,
+                    maxmin: true,
+                    success: function (layero, index) {
+                    },
+                    end: function () {
+                       location.reload();
+                    },
+                });
+            });
+        }
+    }
+</script>
+
+<style type="text/css">
+.input-card{
+font-size:10px;
+}
+.input-card #district{
+ height:25px;
+ width:190px;
+}
+#level{
+height:25px;
+}
+.input-card span{
+height:25px;
+font-size:10px;
+}
+</style>
+
+</html>
+
+
+<!-- 栅格网格系统
+ 	列组合：<div class>
+ -->

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--title 元素的内容会显示在浏览器的标题栏中-->
+	<title>标注面板</title>
+	<script type="text/javascript" src="../static/js/jquery-3.6.0.min.js"></script>
+	<!--可无视-->
+	<link href="../static/css/main.css" rel="stylesheet" type="text/css" />
+
+	<!--必要样式-->
+	<!-- Bootstrap 的 CSS 文件 -->
+	<link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <script src="../static/layui-v2.6.8/layui/layui.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../static/layui-v2.6.8/layui/css/layui.css" media="all">
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+		integrity="sha384-olOxEXxDwd20BlATUibkEnjPN3sVq2YWmYOnsMYutq7X8YcUdD6y/1I+f+ZOq/47" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/>
+</head>
+<body>
+    <form name="layui-form" class="layui-form" lay-filter="layui-form">
+        <div class="body">
+            <div id="pos" class="layui-form-item">
+                {{ panel_address|safe }}
+{#                {% for character in addressInfo.address %}#}
+{#                    <div class="layui-inline">#}
+{#                        <label class="layui-form-label">{{ character }}</label>#}
+{#                        <div class="layui-inline">#}
+{#                            <div class="layui-input-inline">#}
+{#                                <select name="tags" lay-verify="required" lay-search>#}
+{#                                    <option value="010">layer</option>#}
+{#                                    <option value="021">form</option>#}
+{#                                    <option value="0571" selected>layim</option>#}
+{#                                </select>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endfor %}#}
+            </div>
+        </div>
+        <div id="footer" class="footer">
+            {{ confirm_button|safe }}
+        </div>
+
+    </form>
+</body>
+
+<script>
+    function btn_confirm_click(index, sentence_length)
+    {
+        var req = new XMLHttpRequest()
+        req.open('post', 'address_update', true)
+        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+        var annotations = ""
+        for(i = 0; i < sentence_length; i++){
+            var id = 'tag_' + i
+            var annotation = document.getElementById(id).value
+            annotations += annotation + " "
+        }
+        req.send("id=" + index + "&annotations=" + annotations)
+        close_all_windows()
+
+        {#req.onload=function(){#}
+        {#    var jsonObj = JSON.parse(req.responseText)#}
+        {#    var index = parent.layer.getFrameIndex('layer'); //先得到当前iframe层的索引#}
+        {#    parent.layer.close(index);#}
+        {# } #}
+    }
+
+    function close_all_windows(){
+        var layer = parent.layer
+        layer.closeAll()
+        {#alert("close_all")#}
+    }
+</script>
+</html>
